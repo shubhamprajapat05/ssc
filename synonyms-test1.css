@@ -4,7 +4,7 @@ body, h1, h2, h3, p {
 }
 
 main {
-    padding: 20px;
+    padding: 0 20px;
 }
 
 #question-display {
