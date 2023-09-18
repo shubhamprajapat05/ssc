@@ -1,0 +1,12 @@
+.subjects h2{
+    margin-bottom: 5px;
+}
+
+.subjects span{
+    font-size: 14px;
+    color: #5c5c5c;
+}
+
+.subject-grid {
+    margin-top: 15px;
+}
