@@ -1,312 +1,125 @@
-// Mock database of questions
+// Define a function to create a question object
+function createQuestion(id, questionnum, question, options, correctAnswerIndex) {
+    return {
+        id,
+        questionnum,
+        question,
+        options,
+        correctAnswerIndex,
+        userAnswer: null, // Initialize user answer as null
+    };
+}
+
+// Create an array of questions
 const questions = [
-    {
-        id: 1,
-        chapter: 'Question 1',
-        question: 'Select the most appropriate synonym of the given word: Ban.',
-        options: ['A. Ascertain', 'B. Band', 'C. Prohibit', 'D. Abandon'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 2,
-        chapter: 'Question 2',
-        question: 'Select the most appropriate synonym of the given word: Abut.',
-        options: ['A. Nullify', 'B. Catastrophe', 'C. Adjoin', 'D. Mourn'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 3,
-        chapter: 'Question 3',
-        question: 'Select the most appropriate synonym of the given word: Pathetic.',
-        options: ['A. Fame', 'B. Purposeless', 'C. Astound', 'D. Moving'],
-        correctAnswerIndex: 3,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 4,
-        chapter: 'Question 4',
-        question: 'Select the most appropriate synonym of the given word: Jubilant.',
-        options: ['A. Apprentice', 'B. Elated', 'C. Scoundrel', 'D. Copious'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 5,
-        chapter: 'Question 5',
-        question: 'Select the most appropriate synonym of the given word: Effete.',
-        options: ['A. Exhausted', 'B. Deserved', 'C. Kind', 'D. Diligent'],
-        correctAnswerIndex: 0,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 6,
-        chapter: 'Question 6',
-        question: 'Select the most appropriate synonym of the given word: Banish.',
-        options: ['A. Uncivilised', 'B. Fretful', 'C. Exile', 'D. Acknowledge'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 7,
-        chapter: 'Question 7',
-        question: 'Select the most appropriate synonym of the given word: Furbish.',
-        options: ['A. Exemption', 'B. Polish', 'C. Compress', 'D. Imaginative'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 8,
-        chapter: 'Question 8',
-        question: 'Select the most appropriate synonym of the given word: Cajole.',
-        options: ['A. Wandering', 'B. Generous', 'C. Persuade', 'D. Inform'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 9,
-        chapter: 'Question 9',
-        question: 'Select the most appropriate synonym of the given word: Zenith.',
-        options: ['A. Perspicacious', 'B. Peak', 'C. Reflect', 'D. Helper'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 10,
-        chapter: 'Question 10',
-        question: 'Select the most appropriate synonym of the given word: Thrive.',
-        options: ['A. Remark', 'B. Apprentice', 'C. Flourish', 'D. Scoundrel'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 11,
-        chapter: 'Question 11',
-        question: 'Select the most appropriate synonym of the given word: Denounce.',
-        options: ['A. Delight', 'B. Accuse', 'C. Zenith', 'D. Coax'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 12,
-        chapter: 'Question 12',
-        question: 'Select the most appropriate synonym of the given word: Ingenuous.',
-        options: ['A. Chicane', 'B. Inform', 'C. Artless', 'D. Partner'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 13,
-        chapter: 'Question 13',
-        question: 'Select the most appropriate synonym of the given word: Constant.',
-        options: ['A. Eternal', 'B. Agile', 'C. Clever', 'D. Accede'],
-        correctAnswerIndex: 0,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 14,
-        chapter: 'Question 14',
-        question: 'Select the most appropriate synonym of the given word: Lethargy.',
-        options: ['A. Sluggishness', 'B. Frivolous', 'C. Laziness', 'D. Peerless'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 15,
-        chapter: 'Question 15',
-        question: 'Select the most appropriate synonym of the given word: Scanty.',
-        options: ['A. Meagre', 'B. Brief', 'C. Acquire', 'D. Nostalgic'],
-        correctAnswerIndex: 0,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 16,
-        chapter: 'Question 16',
-        question: 'Select the most appropriate synonym of the given word: Resistance.',
-        options: ['A. Equivalent', 'B. Denunciation', 'C. Instigate', 'D. Opposition'],
-        correctAnswerIndex: 3,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 17,
-        chapter: 'Question 17',
-        question: 'Select the most appropriate synonym of the given word: Abhor.',
-        options: ['A. Silly', 'B. Hate', 'C. Celebrate', 'D. Pleasure'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 18,
-        chapter: 'Question 18',
-        question: 'Select the most appropriate synonym of the given word: Ferocious.',
-        options: ['A. Depor', 'B. Savage', 'C. Touching', 'D. Calamity'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 19,
-        chapter: 'Question 19',
-        question: 'Select the most appropriate synonym of the given word: Fury.',
-        options: ['A. Prevent', 'B. Impudent', 'C. Anger', 'D. Errant'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 20,
-        chapter: 'Question 20',
-        question: 'Select the most appropriate synonym of the given word: Contingent.',
-        options: ['A. Proportionate', 'B. Liable', 'C. Confidant', 'D. Trustworthy'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 21,
-        chapter: 'Question 21',
-        question: 'Select the most appropriate synonym of the given word: Inanimate.',
-        options: ['A. Dormant', 'B. Lifeless', 'C. Suffering', 'D. Implore'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 22,
-        chapter: 'Question 22',
-        question: 'Select the most appropriate synonym of the given word: Destitute.',
-        options: ['A. Errant', 'B. Proportionate', 'C. Needy', 'D. Confidant'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 23,
-        chapter: 'Question 23',
-        question: 'Select the most appropriate synonym of the given word: Irresolute.',
-        options: ['A. Undecided', 'B. Canny', 'C. Succor', 'D. Cheerful'],
-        correctAnswerIndex: 0,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 24,
-        chapter: 'Question 24',
-        question: 'Select the most appropriate synonym of the given word: Indignant.',
-        options: ['A. Naive', 'B. Angry', 'C. Suffering', 'D. Catastrophe'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 25,
-        chapter: 'Question 25',
-        question: 'Select the most appropriate synonym of the given word: Entice.',
-        options: ['A. Lure', 'B. Faithful', 'C. Fixed', 'D. Detest'],
-        correctAnswerIndex: 0,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 26,
-        chapter: 'Question 26',
-        question: 'Select the most appropriate synonym of the given word: Pious.',
-        options: ['A. Herald', 'B. Religious', 'C. Defame', 'D. Reflect'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 27,
-        chapter: 'Question 27',
-        question: 'Select the most appropriate synonym of the given word: Dilate.',
-        options: ['A. Spin', 'B. Weaken', 'C. Widen', 'D. Push'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 28,
-        chapter: 'Question 28',
-        question: 'Select the most appropriate synonym of the given word: Abrogate.',
-        options: ['A. Elope', 'B. Gate-crash', 'C. Abolish', 'D. Destroy'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 29,
-        chapter: 'Question 29',
-        question: 'Select the most appropriate synonym of the given word: Command.',
-        options: ['A. Lead', 'B. Instruction', 'C. Manage', 'D. Supervise'],
-        correctAnswerIndex: 1,
-        userAnswer: null  // To store the user's selected answer
-    },
-    {
-        id: 30,
-        chapter: 'Question 30',
-        question: 'Select the most appropriate synonym of the given word: Motive.',
-        options: ['A. Reason', 'B. Occasion', 'C. Intention', 'D. Preparation'],
-        correctAnswerIndex: 2,
-        userAnswer: null  // To store the user's selected answer
-    },
-    // Add more questions here
+    createQuestion(1, 'Question 1:', 'Select the most appropriate synonym of the given word: Ban.', ['A. Ascertain', 'B. Band', 'C. Prohibit', 'D. Abandon'], 2),
+    createQuestion(2, 'Question 2:', 'Select the most appropriate synonym of the given word: Abut.', ['A. Nullify', 'B. Catastrophe', 'C. Adjoin', 'D. Mourn'], 2),
+    createQuestion(3, 'Question 3:', 'Select the most appropriate synonym of the given word: Pathetic.', ['A. Fame', 'B. Purposeless', 'C. Astound', 'D. Moving'], 3),
+    createQuestion(4, 'Question 4:', 'Select the most appropriate synonym of the given word: Jubilant.', ['A. Apprentice', 'B. Elated', 'C. Scoundrel', 'D. Copious'], 1),
+    createQuestion(5, 'Question 5:', 'Select the most appropriate synonym of the given word: Effete.', ['A. Exhausted', 'B. Deserved', 'C. Kind', 'D. Diligent'], 0),
+    createQuestion(6, 'Question 6:', 'Select the most appropriate synonym of the given word: Banish.', ['A. Uncivilized', 'B. Fretful', 'C. Exile', 'D. Acknowledge'], 2),
+    createQuestion(7, 'Question 7:', 'Select the most appropriate synonym of the given word: Furbish.', ['A. Exemption', 'B. Polish', 'C. Compress', 'D. Imaginative'], 1),
+    createQuestion(8, 'Question 8:', 'Select the most appropriate synonym of the given word: Cajole.', ['A. Wandering', 'B. Generous', 'C. Persuade', 'D. Inform'], 2),
+    createQuestion(9, 'Question 9:', 'Select the most appropriate synonym of the given word: Zenith.', ['A. Perspicacious', 'B. Peak', 'C. Reflect', 'D. Helper'], 1),
+    createQuestion(10, 'Question 10:', 'Select the most appropriate synonym of the given word: Thrive.', ['A. Remark', 'B. Apprentice', 'C. Flourish', 'D. Scoundrel'], 2),
+    createQuestion(11, 'Question 11:', 'Select the most appropriate synonym of the given word: Denounce.', ['A. Delight', 'B. Accuse', 'C. Zenith', 'D. Coax'], 1),
+    createQuestion(12, 'Question 12:', 'Select the most appropriate synonym of the given word: Ingenuous.', ['A. Chicane', 'B. Inform', 'C. Artless', 'D. Partner'], 2),
+    createQuestion(13, 'Question 13:', 'Select the most appropriate synonym of the given word: Constant.', ['A. Eternal', 'B. Agile', 'C. Clever', 'D. Accede'], 0),
+    createQuestion(14, 'Question 14:', 'Select the most appropriate synonym of the given word: Lethargy.', ['A. Sluggishness', 'B. Frivolous', 'C. Laziness', 'D. Peerless'], 2),
+    createQuestion(15, 'Question 15:', 'Select the most appropriate synonym of the given word: Scanty.', ['A. Meagre', 'B. Brief', 'C. Acquire', 'D. Nostalgic'], 0),
+    createQuestion(16, 'Question 16:', 'Select the most appropriate synonym of the given word: Resistance.', ['A. Equivalent', 'B. Denunciation', 'C. Instigate', 'D. Opposition'], 3),
+    createQuestion(17, 'Question 17:', 'Select the most appropriate synonym of the given word: Abhor.', ['A. Silly', 'B. Hate', 'C. Celebrate', 'D. Pleasure'], 1),
+    createQuestion(18, 'Question 18:', 'Select the most appropriate synonym of the given word: Ferocious.', ['A. Depor', 'B. Savage', 'C. Touching', 'D. Calamity'], 1),
+    createQuestion(19, 'Question 19:', 'Select the most appropriate synonym of the given word: Fury.', ['A. Prevent', 'B. Impudent', 'C. Anger', 'D. Errant'], 2),
+    createQuestion(20, 'Question 20:', 'Select the most appropriate synonym of the given word: Contingent.', ['A. Proportionate', 'B. Liable', 'C. Confidant', 'D. Trustworthy'], 1),
+    createQuestion(21, 'Question 21:', 'Select the most appropriate synonym of the given word: Inanimate.', ['A. Dormant', 'B. Lifeless', 'C. Suffering', 'D. Implore'], 1),
+    createQuestion(22, 'Question 22:', 'Select the most appropriate synonym of the given word: Destitute.', ['A. Errant', 'B. Proportionate', 'C. Needy', 'D. Confidant'], 2),
+    createQuestion(23, 'Question 23:', 'Select the most appropriate synonym of the given word: Irresolute.', ['A. Undecided', 'B. Canny', 'C. Succor', 'D. Cheerful'], 0),
+    createQuestion(24, 'Question 24:', 'Select the most appropriate synonym of the given word: Indignant.', ['A. Naive', 'B. Angry', 'C. Suffering', 'D. Catastrophe'], 1),
+    createQuestion(25, 'Question 25:', 'Select the most appropriate synonym of the given word: Entice.', ['A. Lure', 'B. Faithful', 'C. Fixed', 'D. Detest'], 0),
+    createQuestion(26, 'Question 26:', 'Select the most appropriate synonym of the given word: Pious.', ['A. Herald', 'B. Religious', 'C. Defame', 'D. Reflect'], 1),
+    createQuestion(27, 'Question 27:', 'Select the most appropriate synonym of the given word: Dilate.', ['A. Spin', 'B. Weaken', 'C. Widen', 'D. Push'], 2),
+    createQuestion(28, 'Question 28:', 'Select the most appropriate synonym of the given word: Abrogate.', ['A. Elope', 'B. Gate-crash', 'C. Abolish', 'D. Destroy'], 2),
+    createQuestion(29, 'Question 29:', 'Select the most appropriate synonym of the given word: Command.', ['A. Lead', 'B. Instruction', 'C. Manage', 'D. Supervise'], 1),
+    createQuestion(30, 'Question 30:', 'Select the most appropriate synonym of the given word: Motive.', ['A. Reason', 'B. Occasion', 'C. Intention', 'D. Preparation'], 2),
 ];
 
 let currentQuestionIndex = 0; // Initialize with the first question
-
-// Initialize an array to store user answers, initially filled with null values
-const userAnswers = new Array(questions.length).fill(null);
 
 // Function to display the current question
 function displayCurrentQuestion() {
     const question = questions[currentQuestionIndex];
     const questionDisplay = document.getElementById('question-display');
+    questionDisplay.innerHTML = ''; // Clear the previous question
+
+    // Create question elements
     const questionElement = document.createElement('div');
     questionElement.classList.add('question');
 
-    // Display question, options, and answer selection here
-    questionElement.innerHTML = `
-    <p>${question.chapter}</p>
-    <p>${question.question}</p>
-    <ul>
-        ${question.options.map((option, index) => `
-            <li class="${userAnswers[question.id - 1] === index ? '' : ''}">
-                <label>
-                    <input 
-                        type="radio" 
-                        name="question${question.id}" 
-                        value="${index}" 
-                        onclick="toggleAnswer(${question.id}, this.value)"
-                        ${userAnswers[question.id - 1] === index ? 'checked' : ''}
-                    >
-                    ${option}
-                </label>
-            </li>
-        `).join('')}
-    </ul>
-    <p>Selected Answer: <span class="selected-answer" data-question-id="${question.id}" style="display: none">None</span></p>
-    <p>Correct Answer: <span class="correct-answer" data-question-id="${question.id}" style="display: none">${question.options[question.correctAnswerIndex]}</span></p>
-    <button class="next-button" onclick="nextQuestion()">Next ></button>
-    <button class="submit-button" onclick="submitQuiz()" style="display: none;">Submit</button>
-    <button class="prev-button" onclick="previousQuestion()">< Previous</button>
-`;
+    const questionText = document.createElement('p');
+    questionText.textContent = `${question.questionnum}\n${question.question}`;
+    questionElement.appendChild(questionText);
 
-    questionDisplay.innerHTML = ''; // Clear the previous question
+    const optionsList = document.createElement('ul');
+    question.options.forEach((option, index) => {
+        const optionItem = document.createElement('li');
+        const optionLabel = document.createElement('label');
+        optionLabel.innerHTML = `
+            <input 
+                type="radio" 
+                name="question${question.id}" 
+                value="${index}" 
+                onclick="toggleAnswer(${question.id}, ${index})"
+                ${question.userAnswer === index ? 'checked' : ''}
+            >
+            ${option}
+        `;
+        optionItem.appendChild(optionLabel);
+        optionsList.appendChild(optionItem);
+    });
+    questionElement.appendChild(optionsList);
+
+    const selectedAnswer = document.createElement('p');
+    selectedAnswer.innerHTML = `Selected Answer: <span class="selected-answer" data-question-id="${question.id}" style="display: none">None</span>`;
+    questionElement.appendChild(selectedAnswer);
+
+    const correctAnswer = document.createElement('p');
+    correctAnswer.innerHTML = `Correct Answer: <span class="correct-answer" data-question-id="${question.id}" style="display: none">${question.options[question.correctAnswerIndex]}</span>`;
+    questionElement.appendChild(correctAnswer);
+
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next >';
+    nextButton.classList.add('next-button');
+    nextButton.addEventListener('click', nextQuestion);
+    questionElement.appendChild(nextButton);
+
+    const submitButton = document.createElement('button');
+    submitButton.textContent = 'Submit';
+    submitButton.classList.add('submit-button');
+    submitButton.style.display = 'none';
+    submitButton.addEventListener('click', submitQuiz);
+    questionElement.appendChild(submitButton);
+
+    const prevButton = document.createElement('button');
+    prevButton.textContent = '< Previous';
+    prevButton.classList.add('prev-button');
+    prevButton.addEventListener('click', previousQuestion);
+    questionElement.appendChild(prevButton);
+
     questionDisplay.appendChild(questionElement);
 
-
-    // Hide the "Next" button on the last question and show the "Submit" button
-    const nextButton = document.querySelector('.next-button');
-    const submitButton = document.querySelector('.submit-button');
-    if (currentQuestionIndex === questions.length - 1) {
-        nextButton.style.display = 'none';
-        submitButton.style.display = 'block';
-    } else {
-        nextButton.style.display = 'block';
-        submitButton.style.display = 'none';
-    }
+    // Show/hide "Next" and "Submit" buttons
+    nextButton.style.display = currentQuestionIndex === questions.length - 1 ? 'none' : 'block';
+    submitButton.style.display = currentQuestionIndex === questions.length - 1 ? 'block' : 'none';
 }
 
 // Function to toggle answer selection
 function toggleAnswer(questionId, selectedOptionIndex) {
-    userAnswers[questionId - 1] = selectedOptionIndex; // Update the user's selected answer
     const question = questions.find((q) => q.id === questionId);
 
     if (question.userAnswer === selectedOptionIndex) {
         // Clicked option is already selected, so clear the selection
         question.userAnswer = null;
-        document.querySelector(`input[type="radio"][name="question${question.id}"][value="${selectedOptionIndex}"]`).checked = false;
     } else {
         // Toggle the selection
         question.userAnswer = selectedOptionIndex;
@@ -318,7 +131,7 @@ function toggleAnswer(questionId, selectedOptionIndex) {
     selectedAnswerElement.style.display = 'inline';
 
     // Check if the selected answer is correct and update the style accordingly
-    if (question.userAnswer == question.correctAnswerIndex) {
+    if (question.userAnswer === question.correctAnswerIndex) {
         selectedAnswerElement.style.color = 'green';
         selectedAnswerElement.innerHTML += ' &#10004;'; // Add a green checkmark
     } else {
@@ -360,11 +173,50 @@ function getSelectedAnswer(question) {
     }
 }
 
+// Function to calculate quiz results and display the popup
+function submitQuiz() {
+    let correctCount = 0;
+    let incorrectCount = 0;
+    let unansweredCount = 0;
+
+    // Calculate results
+    for (let i = 0; i < questions.length; i++) {
+        const userAnswer = questions[i].userAnswer;
+        const question = questions[i];
+
+        if (userAnswer === null) {
+            unansweredCount++;
+        } else if (userAnswer === question.correctAnswerIndex) {
+            correctCount++;
+        } else {
+            incorrectCount++;
+        }
+    }
+
+    // Display results in the popup
+    const correctAnswersElement = document.getElementById('correct-answers');
+    const incorrectAnswersElement = document.getElementById('incorrect-answers');
+    const unansweredQuestionsElement = document.getElementById('unanswered-questions');
+
+    correctAnswersElement.textContent = correctCount;
+    incorrectAnswersElement.textContent = incorrectCount;
+    unansweredQuestionsElement.textContent = unansweredCount;
+
+    // Show the popup
+    const popup = document.getElementById('quiz-results-popup');
+    popup.style.display = 'block';
+
+    // Add an event listener to the "Back to Chapters" button
+    const backButton = document.getElementById('back-button');
+    backButton.addEventListener('click', function () {
+        window.location.href = 'eng-chapters.html'; // Replace with the correct URL
+    });
+}
+
 // Initialize the application by displaying the first question
 function init() {
     displayCurrentQuestion();
 }
-
 
 // Call the init function when the page loads
 window.onload = init;
