@@ -33,7 +33,7 @@ const questions = [
     createQuestion(19, 'Question 19:', 'Select the most appropriate synonym of the given word: Current.', ['A. Antiquated', 'B. Uncommon', 'C. Old', 'D. Present'], 3),
     createQuestion(20, 'Question 20:', 'Select the most appropriate synonym of the given word: Adhere.', ['A. Comply', 'B. Ignore', 'C. Release', 'D. Detach'], 0),
     createQuestion(21, 'Question 21:', 'Select the most appropriate synonym of the given word: Combustible.', ['A. Unbreakable', 'B. Nonexplosive', 'C. Fragile', 'D. Inflammable'], 3),
-    createQuestion(22, 'Question 22:', 'Select the most appropriate synonym of the given word: Embed.', ['A. Pull', 'B. Bury', 'C. Dig Up', 'D. Rise'], 0),
+    createQuestion(22, 'Question 22:', 'Select the most appropriate synonym of the given word: Embed.', ['A. Pull', 'B. Bury', 'C. Dig Up', 'D. Rise'], 1),
     createQuestion(23, 'Question 23:', 'Select the most appropriate synonym of the given word: Enthrall.', ['A. Free', 'B. Disgust', 'C. Mesmerize', 'D. Repel'], 2),
     createQuestion(24, 'Question 24:', 'Select the most appropriate synonym of the given word: Innuendo.', ['A. Proof', 'B. Verification', 'C. Evidence', 'D. Implication'], 3),
 
